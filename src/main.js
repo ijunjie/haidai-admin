@@ -5,10 +5,12 @@ import App from './App'
 import router from './router'
 import Row from './plugins/row/index'
 import Col from './plugins/col/index'
+import Dialog from './plugins/dialog/index'
 
 Vue.config.productionTip = false
 Vue.use(Row)
 Vue.use(Col)
+Vue.use(Dialog)
 
 /* eslint-disable no-new */
 new Vue({
