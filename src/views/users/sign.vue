@@ -4,13 +4,16 @@
     <div class="admin-desc">注册账号</div>
     <div class="form-container">
       <div class="form-label">
-        <input @keydown="changeValue" type="text" placeholder="用户名" v-model="username">
+        <input type="text" placeholder="用户名" v-model="username">
       </div>
       <div class="form-label">
         <input v-model="password" type="password" placeholder="密码">
       </div>
+      <div class="form-label">
+        <input v-model="repassword" type="password" placeholder="重复密码">
+      </div>
       <div class="submit">
-        <button class="login" @click="login" :disabled="disabled">注册账号</button>
+        <button class="login" @click="sign" :disabled="disabled">注册账号</button>
       </div>
       <p class="forget-pwd sign-up-desc">已有有账号？</p>
       <div class="submit">
@@ -25,12 +28,13 @@
     data () {
       return {
         username: '',
-        password: ''
+        password: '',
+        repassword: ''
       }
     },
     computed: {
       disabled () {
-        return this.username === '' || this.password === ''
+        return this.username === '' || this.password === '' || this.repassword === '' || this.repassword !== this.password
       }
     },
     methods: {
@@ -38,24 +42,17 @@
         this.show = false
         this.$router.push({path: '/login'})
       },
-      changeValue (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-          e.returnValue = false
-        }
-      },
-      login () {
-        api.login({
+      sign () {
+        api.sign({
           username: this.username,
           password: this.password
         }).then(res => {
-          if (!res.data.code) {
-            this.$router.push({path: '/'})
-          }
+          this.$router.push({path: '/'})
         })
       }
     },
     mounted () {
-      api.getShopDetail()
+
     }
   }
 </script>

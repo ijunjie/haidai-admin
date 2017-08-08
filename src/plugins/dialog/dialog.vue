@@ -5,11 +5,13 @@
       <div class="su-dialog__wrapper" v-show="show.visible" @click="show.visible=false">
         <div :class="['su-dialog','su-size-'+size]" @click="prevent">
           <div class="su-dialog__header">
-            <span class="title">{{title}}{{show}}</span>
-            <span class="close" @click="show.visible=false">×</span>
+            <slot name="title">
+              <span class="su-dialog__title">{{title}}</span>
+            </slot>
+            <span class="su-dialog__close" @click="show.visible=false">×</span>
           </div>
           <div class="su-dialog__body">
-            <slot name="body"></slot>
+            <slot></slot>
           </div>
           <div class="su-dialog__footer">
             <slot name="footer"></slot>
@@ -67,6 +69,7 @@
     overflow: auto;
     z-index: 2017;
     .su-dialog{
+      padding: 15px 40px;
       background: #fff;
       position: absolute;
       left: 50%;
@@ -75,6 +78,18 @@
       border-radius: 2px;
       box-shadow: 0 1px 3px rgba(0,0,0,.3);
       transition:top 0.35s linear;
+      .su-dialog__header{
+        padding: 7px 0 24px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .su-dialog__close{
+        float: right;
+        font-size: 30px;
+        font-weight: normal;
+        margin-top: -10px;
+        cursor: pointer;
+      }
     }
     .su-size-middle{
       width: 640px;

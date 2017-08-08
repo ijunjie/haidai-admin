@@ -11,6 +11,9 @@ let api = {
   login (params) {
     return util.post('/users/login', params)
   },
+  sign (params) {
+    return util.post('/users/sign', params)
+  },
   getShopDetail (params) {
     return util.get('/index/getShopDetail', params)
   }
