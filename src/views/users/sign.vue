@@ -1,7 +1,7 @@
 <template>
   <div class="user-container">
-    <div class="admin-title">登录海带后台</div>
-    <div class="admin-desc">登录获取更多信息</div>
+    <div class="admin-title">注册海带后台</div>
+    <div class="admin-desc">注册账号</div>
     <div class="form-container">
       <div class="form-label">
         <input @keydown="changeValue" type="text" placeholder="用户名" v-model="username">
@@ -10,12 +10,11 @@
         <input v-model="password" type="password" placeholder="密码">
       </div>
       <div class="submit">
-        <button class="login" @click="login" :disabled="disabled">登录</button>
+        <button class="login" @click="login" :disabled="disabled">注册账号</button>
       </div>
-      <a class="forget-pwd">忘记密码？</a>
-      <p class="forget-pwd sign-up-desc">还没有账号？</p>
+      <p class="forget-pwd sign-up-desc">已有有账号？</p>
       <div class="submit">
-        <button class="sign login" @click="goSign">创建账号</button>
+        <button class="sign login" @click="goLogin">去登陆</button>
       </div>
     </div>
   </div>
@@ -26,8 +25,7 @@
     data () {
       return {
         username: '',
-        password: '',
-        show: true
+        password: ''
       }
     },
     computed: {
@@ -36,8 +34,9 @@
       }
     },
     methods: {
-      goSign () {
-        this.$router.push({path: '/sign'})
+      goLogin () {
+        this.show = false
+        this.$router.push({path: '/login'})
       },
       changeValue (e) {
         if (e.keyCode < 48 || e.keyCode > 57) {
@@ -109,11 +108,8 @@
         opacity: 0.5;
       }
       .forget-pwd{
-        display: block;
         margin: 15px;
         font-size: @ft-14;
-        color: @black;
-        text-decoration: none;
       }
       .sign-up-desc{
         margin: 30px 0 0;
