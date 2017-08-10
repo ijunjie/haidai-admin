@@ -10,17 +10,17 @@
     name: 'Home',
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
+        username: ''
       }
     },
     mounted () {
-      api.getShopList().then(res => {
-        if (!res.data.code && !res.data.data.result) {
-          console.log(res.data)
+      api.getUserInfo().then(res => {
+        if (res.data.code) {
           this.$router.push({path: '/login'})
+        } else {
+          this.username = res.data.data.username
         }
-      }).catch(() => {
-        this.$router.push({path: '/login'})
       })
     }
   }

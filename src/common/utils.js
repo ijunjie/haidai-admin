@@ -16,7 +16,7 @@ const Utils = {
           if (response.data.code === 1010) {
             console.log('没有权限')
             console.log(this)
-          } else if (response.data.code === 0) {
+          } else if (response.data.code === 0 || response.data.code === 1) {
             resolve(response)
           } else {
             console.log('接口返回状态码：' + response.data.code)

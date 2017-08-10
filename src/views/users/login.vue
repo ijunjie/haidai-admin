@@ -4,7 +4,7 @@
     <div class="admin-desc">登录获取更多信息</div>
     <div class="form-container">
       <div class="form-label">
-        <input @keydown="changeValue" type="text" placeholder="用户名" v-model="username">
+        <input type="text" placeholder="用户名" v-model="username">
       </div>
       <div class="form-label">
         <input v-model="password" type="password" placeholder="密码">
@@ -38,11 +38,6 @@
     methods: {
       goSign () {
         this.$router.push({path: '/sign'})
-      },
-      changeValue (e) {
-        if (e.keyCode < 48 || e.keyCode > 57) {
-          e.returnValue = false
-        }
       },
       login () {
         api.login({

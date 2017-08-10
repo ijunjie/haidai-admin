@@ -6,11 +6,13 @@ import router from './router'
 import Row from './plugins/row/index'
 import Col from './plugins/col/index'
 import Dialog from './plugins/dialog/index'
+import CollapseItem from './plugins/collapse-item/index'
 
 Vue.config.productionTip = false
 Vue.use(Row)
 Vue.use(Col)
 Vue.use(Dialog)
+Vue.use(CollapseItem)
 
 /* eslint-disable no-new */
 new Vue({
